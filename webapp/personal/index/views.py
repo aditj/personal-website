@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Project,Article,Interest,Book,Contact
+import git
 # Create your views here.
 def index(request):
 
@@ -19,3 +20,11 @@ def contact(request):
         a=Contact(request.POST.get("name"),request.POST.get("email"),request.POST.get("phone"),request.POST.get("message"))
         a.save()
         return HttpResponseRedirect('/index',{'message':"Submitted"})
+def webhook(request):
+  if request.method == 'POST':
+    repo = git.Repo('/home/aditjain/personal-website')
+    origin = repo.remotes.origin
+    origin.pull()
+    return 'Updated PythonAnywhere successfully', 200
+  else:
+    return 'Wrong event type', 400
