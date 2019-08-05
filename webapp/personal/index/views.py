@@ -28,6 +28,6 @@ def webhook(request):
     repo = git.Repo('/home/aditjain/personal-website')
     origin = repo.remotes.origin
     origin.pull()
-    return 'Updated PythonAnywhere successfully', 200
+    return HttpResponse("Success")
   else:
-    return 'Wrong event type', 400
+    return HttpResponse("Cool")
