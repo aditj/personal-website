@@ -20,6 +20,7 @@ def contact(request):
         a=Contact(request.POST.get("name"),request.POST.get("email"),request.POST.get("phone"),request.POST.get("message"))
         a.save()
         return HttpResponseRedirect('/index',{'message':"Submitted"})
+@csrf_exempt
 def webhook(request):
   if request.method == 'POST':
     repo = git.Repo('/home/aditjain/personal-website')
