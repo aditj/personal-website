@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/efrolic@0.2.9/dist/css/efrolic.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+
+
+         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css">
+<link rel="stylesheet" href="{% static 'index/css/master.css' %}">
+         <script type="text/javascript" src="{% static 'index/script/script.js' %}"></script>
+
+  </head>
+  <body >
+    <div class="e-container-fluid e-fullscreen" >
+        <div class="e-box e-fullscreen bg" id="home">
+        <div class="e-cols centered">
+          <div class="e-col-4" >
+            <p class="title">Hey <br> I am   <span id="spin"></span>! </p>
+
+          </div>
+          <div class="e-col-4">
+            <img src="{% static 'index/images/home.jpg' %}" alt="" id="home_img">
+          </div>
+          <div class="e-col-4">
+
+          </div>
+
+          <div class="e-col-4  " id="fixed-navbar">
+          <ul class="vertical menu align-right" id="topics">
+              <li id="selected"><a href="#home" class="white">Home</a></li>
+              <li><a href="#projects" class="white align-right">Projects</a></li>
+              <li><a href="#articles" class="white">Articles</a></li>
+              <li ><a href="#interests" class="white">Interests</a></li>
+              <li ><a href="#books" class="white">Books</a></li>
+                <li ><a href="#contact" class="white"> Reach Me</a></li>
+              <li ><a href="#about" class="white"> About Me</a></li>
+
+            </ul>
+          </div>
+
+                        </div>
+
+        </div>
+
+        <div class="e-box e-fullscreen bg" id="projects">
+          <div class="e-cols">
+
+          <div class="e-col-8">
+            <p class="title" id="title">Projects</p>
+            <ul class="accordion" data-accordion role = "tablist" >
+
+
+              {% for project in projects %}
+              {% if forloop.counter == 1 %}
+              <li class="accordion-item is-active e-col-8" data-accordion-item >
+              {% else %}
+                <li class="accordion-item e-col-8" data-accordion-item>
+              {% endif %}
+                <a href="#project{{ forloop.counter }}" role = "tab" class="accordion-title" id = "project{{ forloop.counter }}-heading">{{ project.name }}</a>
+                <div id="project{{ forloop.counter }}" class="accordion-content" data-tab-content role = "tabpanel" data-tab-content aria-labelledby = "panel1d-heading">
+                  <div class="e-cols">
+                    <div class="e-col-4">
+  <h5>{{ project.type }}</h5><br>
+      {{ project.desc }}<br>
+                    </div>
+                    <div class="e-col-4">
+                      <a href="{{ project.url }}">URL</a><br>
+
+
+                      {{project.done_on }}
+                    </div>
+<div class="e-col-4">
+
+</div>
+                  </div>
+<div class="e-cols">
+  <div class="e-col-4">
+
+  </div>
+  <div class="e-col-4">
+{% if project.image %}
+<img src="{{project.image.url }}" alt="">
+{% endif %}
+  </div>
+  <div class="e-col-4">
+
+  </div>
+</div>
+
+                  </div>
+
+              </li>
+              {% endfor %}
+
+            </ul>
+          </div>
+
+          <div class="e-col-4">
+
+          </div>
+        </div>
+        </div>
+        <div class="e-box e-fullscreen bg" id="articles">
+          <div class="e-col-8">
+            <p class="title" id="title">Articles</p>
+            <div class="e-cols">
+
+
+            <table class="e-table primary e-col-8">
+  <thead class="e-thead">
+    <tr>
+      <th>Title</th>
+      <th>About</th>
+      <th>Written On</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in articles %}
+    <tr>
+      <td>{{article.topic}}</td>
+      <td>{{ article.about }}</td>
+      <td>{{ article.written_on}}</td>
+      <td> <a href="/index/article/{{article_id}}"> Read </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="e-col-4">
+
+</div>
+  </div>
+          </div>
+          <div class="e-col-4">
+
+          </div>
+        </div>
+        <div class="e-box e-fullscreen bg" id="interests">
+          <div class="e-col">
+            <p class="title" id="title">Interests</p>
+          </div>
+          <div class="e-col">
+            <div class="grid-container">
+              <div class="grid-x grid-margin-x" style="display:inline-flex">
+                <div class="cell medium-3">
+                  <ul class="vertical tabs" data-tabs id="example-tabs">
+                    <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
+                    <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
+                    <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
+                    <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
+                    <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
+                    <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
+                  </ul>
+                </div>
+                <div class="cell medium-9" style="width:100%">
+                  <div class="tabs-content" data-tabs-content="example-tabs">
+                    <div class="tabs-panel is-active" id="panel1v">
+                      <p>One</p>
+                      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+                    </div>
+                    <div class="tabs-panel" id="panel2v">
+                      <p>Two</p>
+                      <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+                    </div>
+                    <div class="tabs-panel" id="panel3v">
+                      <p>Three</p>
+                      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+                    </div>
+                    <div class="tabs-panel" id="panel4v">
+                      <p>Four</p>
+                      <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
+                    </div>
+                    <div class="tabs-panel" id="panel5v">
+                      <p>Five</p>
+                      <p>Check me out! I'm a super cool Tab panel with text content!</p>
+                    </div>
+                    <div class="tabs-panel" id="panel6v">
+                      <p>Six</p>
+                      <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="e-box e-fullscreen bg" id="books">
+        <div class="e-col">
+          <p class="title" id="title">Books</p>
+        </div>
+        <div class="e-col">
+
+        </div>
+
+      </div>
+      <div class="e-box e-fullscreen bg" id="contact">
+        <div class="e-cols">
+          <section id="contact">
+
+  <h1 class="section-header">CONTACT</h1>
+
+  <div class="contact-wrapper">
+
+      <!----------------
+
+      CONTACT PAGE LEFT
+
+      ----------------->
+
+    <form class="form-horizontal" role="form" method="post" action="/submit">
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="">
+        </div>
+      </div>
+
+      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message"></textarea>
+
+      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+        <div class="button">
+          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
+        </div>
+
+      </button>
+
+    </form>
+
+      <!----------------
+
+      CONTACT PAGE RIGHT
+
+      ----------------->
+
+      <div class="direct-contact-container">
+
+        <ul class="contact-list">
+          <li class="list-item"><i class="fa fa-map-marker fa-2x white"><span class="contact-text place ">Guwahati |Assam |India</span></i></li>
+          <li class="list-item"><i class="fa fa-map-marker fa-2x white"><span class="contact-text place ">Greater Noida |UP |India</span></i></li>
+          <li class="list-item"><i class="fa fa-phone fa-2x white"><span class="contact-text phone"white ><a href="tel:+91-8750407639" title="Give me a call">91-8750407639</a></span></i></li>
+
+          <li class="list-item"><i class="fa fa-envelope fa-2x white"><span class="contact-text gmail "><a href="mailto:adit18@iitg.ac.in" title="Send me an official email">adit18@iitg.ac.in</a></span></i></li>
+            <li class="list-item"><i class="fa fa-envelope fa-2x white"><span class="contact-text gmail "><a href="mailto:aditjain@gmail.com" title="Send me an email">aditjain@gmail.com</a></span></i></li>
+        </ul>
+
+        <hr>
+        <ul class="social-media-list">
+
+          <li><a href="github.com/aditj" target="_blank" class="e-btn circle plus dark">
+            <i class="fab fa-github" aria-hidden="true"></i></a>
+          </li>
+          <li><a href="facebook.com/adit.ism" target="_blank" class="e-btn circle plus primary">
+            <i class="fab fa-facebook" aria-hidden="true"></i></a>
+          </li>
+
+          <li><a href="https://www.linkedin.com/in/adit-j-2b139888/" target="_blank" class="e-btn circle plus primary">
+            <i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+        <hr>
+
+      </div>
+
+  </div>
+
+</section>
+
+
+        </div>
+        <div class="e-col">
+
+        </div>
+      </div>
+      <div class="e-box e-fullscreen bg" id="about">
+        <div class="e-cols">
+
+
+        <div class="e-col-8">
+          <p class="title">Timeline</p>
+        </div>
+      </div>
+      <div class="e-cols">
+
+
+      <div class="e-col-8">
+
+<section class="cd-horizontal-timeline">
+<div class="timeline">
+  <div class="events-wrapper">
+    <div class="events">
+      <ol>
+        <li><a href="#0" data-date="10/11/2000">2000</a></li>
+        <li><a href="#0" data-date="05/04/2006">2006</a></li>
+
+        <li><a href="#0" data-date="24/07/2018"  class="selected">July 2018</a></li>
+
+
+
+      </ol>
+
+      <span class="filling-line" aria-hidden="true"></span>
+    </div> <!-- .events -->
+  </div> <!-- .events-wrapper -->
+
+  <ul class="cd-timeline-navigation">
+    <li><a href="#0" class="prev inactive">Prev</a></li>
+    <li><a href="#0" class="next">Next</a></li>
+  </ul> <!-- .cd-timeline-navigation -->
+</div> <!-- .timeline -->
+
+<div class="events-content">
+  <ol>
+    <li  data-date="10/11/2000">
+      <div class="e-cols">
+        <div class="e-col-8">
+          <h2 style="font-size:2em">Born</h2>
+          <em>November 10, 2000</em>
+          <p>
+            Born in the small town of alwar.
+          </p>
+
+        </div>
+        <div class="e-col-4">
+          <img src="https://via.placeholder.com/350" alt="">
+        </div>
+      </div>
+
+    </li>
+    <li data-date="05/04/2006">
+      <div class="e-cols">
+        <div class="e-col-8">
+          <h2>Schooling </h2>
+          <em>2006</em>
+          <p>
+            Schooled right from the kindergarten level in Ryan International School.
+          </p>
+
+        </div>
+        <div class="e-col-4">
+          <img src="https://via.placeholder.com/350" alt="">
+        </div>
+      </div>
+
+    </li>
+    <li data-date="01/06/2018">
+      <div class="e-cols">
+        <div class="e-col-8">
+          <h2>Schooling </h2>
+          <em>June 2018</em>
+          <p>
+            Schooled right from the kindergarten level in Ryan International School.
+          </p>
+
+        </div>
+        <div class="e-col-4">
+          <img src="https://via.placeholder.com/350" alt="">
+        </div>
+      </div>
+
+    </li>
+    <li class="selected" data-date="24/07/2018">
+      <div class="e-cols">
+        <div class="e-col-9">
+          <h2>College </h2>
+          <em>July 2018</em>
+          <p>
+           Started undergraduate education at Indian Institute of Technology,Guwahati.<br>
+           Major: Electronics and Communication Engineering <br>
+           Minor: Computer Science and Engineering
+          </p>
+
+        </div>
+        <div class="e-col-3">
+          <img src="{% static 'index/images/college.png' %}" width="2em" alt="">
+        </div>
+      </div>
+
+    </li>
+
+
+
+  </ol>
+</div> <!-- .events-content -->
+</section>
+
+      </div>
+
+        <div class="e-col-4">
+
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+
+  </body>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+</html>
