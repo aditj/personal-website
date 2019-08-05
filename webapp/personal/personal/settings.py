@@ -25,7 +25,7 @@ SECRET_KEY = 's_s%q0o+33h$ns6nxj!#vxtf2z5n151#)rf+5^rk5ss5szc5-w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aditjain.pythonanywhere.com',]
 
 
 # Application definition
