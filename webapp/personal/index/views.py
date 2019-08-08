@@ -26,6 +26,9 @@ def contact(request):
 def webhook(request):
   if request.method == 'POST':
     repo = git.Repo('/home/aditjain/personal-website')
+    repo.git.reset('--hard')
+    repo.git.clean('-fdx')
+
     origin = repo.remotes.origin
     origin.pull()
     return HttpResponse("Success")
