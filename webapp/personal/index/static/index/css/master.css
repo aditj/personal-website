@@ -2,6 +2,9 @@ html, body {
   height: 100%;
 
 }
+body{
+  padding-top: 14em
+}
 *{
   font-family: 'Karla', sans-serif;
 }
@@ -15,6 +18,28 @@ html, body {
   font-size: 1.5em;
 }
 
+
+
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
 .bg{
   background-color: #ff0000;
 
@@ -23,7 +48,7 @@ html, body {
   height: 100%;
 }
 .title{
-  font-size: 10em;
+  font-size: 6em;
   font-family: 'Karla', sans-serif;
    position: relative;
   line-height: 120%;
@@ -31,13 +56,7 @@ html, body {
 .accordion-title{
   font-size: 3em;
 }
-#topics{
-  font-size:6em;
-  font-family: 'Karla', sans-serif;
-  margin-top: 10%;
-  line-height: 120%;
 
-}
 #fixed-navbar{
   position: fixed;
   transform: translateX(100%);
