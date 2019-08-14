@@ -32,8 +32,8 @@
             <li ><a class="e-menu-item" href="#home" >Home</a></li>
             <li><a  class="e-menu-item" href="#projects" >Projects</a></li>
             <li><a  class="e-menu-item" href="#articles" >Articles</a></li>
-            <li ><a  class="e-menu-item" href="#interests" >Interests</a></li>
-            <li ><a  class="e-menu-item" href="#books" >Books</a></li>
+
+            <li ><a  class="e-menu-item" href="#books" >Books Read</a></li>
               <li ><a   class="e-menu-item" href="#contact"> Reach Me</a></li>
             <li ><a  class="e-menu-item" href="#about" > About Me</a></li>
 
@@ -50,16 +50,14 @@
           </div>
         <div class="e-cols centered">
 
-          <div class="e-col-4" >
-            <p class="title">Hey <br> I am   <span id="spin"></span>! </p>
+          <div class="e-col-8" >
+            <p class="title white">Hey <br> I am   <span id="spin"></span>! </p>
 
           </div>
           <div class="e-col-4">
             <img src="{% static 'index/images/home.jpg' %}" alt="" id="home_img">
           </div>
-          <div class="e-col-4">
 
-          </div>
 
 
                         </div>
@@ -68,10 +66,15 @@
 
         <div class="e-box e-fullscreen bg" id="projects">
           <div class="e-cols">
+            <div class="e-col">
+<br>
+            </div>
+          </div>
+          <div class="e-cols">
 
           <div class="e-col-8">
             <p class="title" id="title">Projects</p>
-            <ul class="accordion" data-accordion role = "tablist" >
+            <ul class="accordion bg no-border white"  data-accordion role = "tablist" >
 
 
               {% for project in projects %}
@@ -84,17 +87,16 @@
                 <div id="project{{ forloop.counter }}" class="accordion-content" data-tab-content role = "tabpanel" data-tab-content aria-labelledby = "panel1d-heading">
                   <div class="e-cols">
                     <div class="e-col-4">
-  <h5>{{ project.type }}</h5><br>
-      {{ project.desc }}<br>
+  <h5>{{ project.type }}</h5>
+    <h6> {{ project.desc }}</h6> <br>
                     </div>
                     <div class="e-col-4">
-                      <a href="{{ project.url }}">URL</a><br>
+                      <h5> <a href="{{ project.url }}">Project Link</a></h5><br>
 
 
-                      {{project.done_on }}
                     </div>
 <div class="e-col-4">
-
+<h6>{{project.done_on }}</h6>
 </div>
                   </div>
 <div class="e-cols">
@@ -117,6 +119,7 @@
               {% endfor %}
 
             </ul>
+        <em> <h6><a href="projects" class="white">Complete List of Projects</a></h6> </em>
           </div>
 
           <div class="e-col-4">
@@ -125,9 +128,15 @@
         </div>
         </div>
         <div class="e-box e-fullscreen bg" id="articles">
+          <div class="e-cols">
+            <div class="e-col">
+<br>
+            </div>
+          </div>
+          <div class="e-cols">
+
           <div class="e-col-8">
             <p class="title" id="title">Articles</p>
-            <div class="e-cols">
 
 
             <table class="e-table primary e-col-8">
@@ -151,50 +160,53 @@
     {% endfor %}
   </tbody>
 </table>
+<em> <h6><a href="articles" class="white">Complete List of Articles</a></h6> </em>
+</div>
+
 <div class="e-col-4">
 
 </div>
+
   </div>
-          </div>
+
           <div class="e-col-4">
 
           </div>
-        </div>
-        <div class="e-box e-fullscreen bg" id="interests">
-          <div class="e-col">
-            <p class="title" id="title">Interests</p>
           </div>
-          <div class="e-col">
-
-          </div>
-
         </div>
-      </div>
+
       <div class="e-box e-fullscreen bg" id="books">
-        <div class="e-col">
-          <p class="title" id="title">Books</p>
+        <div class="e-cols">
+          <div class="e-col">
+<br>
+          </div>
         </div>
         <div class="e-col">
-
+          <p class="title" id="title">Books Read</p>
+        </div>
+        <div class="e-col">
+          <ul class="white" style="font-size:2em">
+            {% for book in books %}
+            {{ book.name }}
+            {% endfor %}
+          </ul>
         </div>
 
       </div>
       <div class="e-box e-fullscreen bg" id="contact">
         <div class="e-cols">
           <section id="contact">
-
+            <div class="e-cols">
+              <div class="e-col">
+            <br>
+              </div>
+            </div>
   <h1 class="section-header">CONTACT</h1>
 
   <div class="contact-wrapper">
 
-      <!----------------
-
-      CONTACT PAGE LEFT
-
-      ----------------->
-
     <form class="form-horizontal" role="form" method="post" action="/submit">
-
+{% csrf_token %}
       <div class="form-group">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="">
@@ -218,11 +230,7 @@
 
     </form>
 
-      <!----------------
 
-      CONTACT PAGE RIGHT
-
-      ----------------->
 
       <div class="direct-contact-container">
 
@@ -268,118 +276,32 @@
 
 
         <div class="e-col-8">
-          <p class="title">Timeline</p>
+          <div class="e-cols">
+            <div class="e-col">
+<br>
+            </div>
+          </div>
+          <p class="title">About Me</p>
         </div>
       </div>
-      <div class="e-cols">
+      <div class="e-cols centered">
+<div class="e-col-2">
 
+</div>
 
       <div class="e-col-8">
-
-<section class="cd-horizontal-timeline">
-<div class="timeline">
-  <div class="events-wrapper">
-    <div class="events">
-      <ol>
-        <li><a href="#0" data-date="10/11/2000">2000</a></li>
-        <li><a href="#0" data-date="05/04/2006">2006</a></li>
-
-        <li><a href="#0" data-date="24/07/2018"  class="selected">July 2018</a></li>
-
-
-
-      </ol>
-
-      <span class="filling-line" aria-hidden="true"></span>
-    </div> <!-- .events -->
-  </div> <!-- .events-wrapper -->
-
-  <ul class="cd-timeline-navigation">
-    <li><a href="#0" class="prev inactive">Prev</a></li>
-    <li><a href="#0" class="next">Next</a></li>
-  </ul> <!-- .cd-timeline-navigation -->
-</div> <!-- .timeline -->
-
-<div class="events-content">
-  <ol>
-    <li  data-date="10/11/2000">
-      <div class="e-cols">
-        <div class="e-col-8">
-          <h2 style="font-size:2em">Born</h2>
-          <em>November 10, 2000</em>
-          <p>
-            Born in the small town of alwar.
-          </p>
-
-        </div>
-        <div class="e-col-4">
-          <img src="https://via.placeholder.com/350" alt="">
-        </div>
-      </div>
-
-    </li>
-    <li data-date="05/04/2006">
-      <div class="e-cols">
-        <div class="e-col-8">
-          <h2>Schooling </h2>
-          <em>2006</em>
-          <p>
-            Schooled right from the kindergarten level in Ryan International School.
-          </p>
-
-        </div>
-        <div class="e-col-4">
-          <img src="https://via.placeholder.com/350" alt="">
-        </div>
-      </div>
-
-    </li>
-    <li data-date="01/06/2018">
-      <div class="e-cols">
-        <div class="e-col-8">
-          <h2>Schooling </h2>
-          <em>June 2018</em>
-          <p>
-            Schooled right from the kindergarten level in Ryan International School.
-          </p>
-
-        </div>
-        <div class="e-col-4">
-          <img src="https://via.placeholder.com/350" alt="">
-        </div>
-      </div>
-
-    </li>
-    <li class="selected" data-date="24/07/2018">
-      <div class="e-cols">
-        <div class="e-col-9">
-          <h2>College </h2>
-          <em>July 2018</em>
-          <p>
-           Started undergraduate education at Indian Institute of Technology,Guwahati.<br>
-           Major: Electronics and Communication Engineering <br>
-           Minor: Computer Science and Engineering
-          </p>
-
-        </div>
-        <div class="e-col-3">
-          <img src="{% static 'index/images/college.png' %}" width="2em" alt="">
-        </div>
-      </div>
-
-    </li>
-
-
-
-  </ol>
-</div> <!-- .events-content -->
-</section>
+        <ul class="white" style="font-size:2em">
+          <li>Born in Alwar,India</li><br>
+          <li>Did most of my schooling in Ryan International School</li><br>
+          <li>Currently learning as an undergraduate at IIT Guwahati with a major in  Electronics and Communication Engineering and a minor in Computer Science Engineering.</li><br>
+          <li>Interested in poetry,cooking,coding,collaboration, reading and above all Problem Solving.</li><br>
+          <li>For a formal resume <a href="#">click here</a> </li>
+        </ul>
 
       </div>
+      <div class="e-col-2">
 
-        <div class="e-col-4">
-
-        </div>
+      </div>
       </div>
       </div>
     </div>

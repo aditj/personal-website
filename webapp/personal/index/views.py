@@ -17,11 +17,13 @@ def article(request,article_id):
     return HttpResponse("Hello")
 def list(request,type):
     return HttpResponse("Hello")
-def contact(request):
+def submit(request):
     if request.method=="POST":
         a=Contact(request.POST.get("name"),request.POST.get("email"),request.POST.get("phone"),request.POST.get("message"))
         a.save()
         return HttpResponseRedirect('/index',{'message':"Submitted"})
+
+
 @csrf_exempt
 def webhook(request):
   if request.method == 'POST':
