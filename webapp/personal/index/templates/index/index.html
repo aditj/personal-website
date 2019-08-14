@@ -90,13 +90,18 @@
   <h5>{{ project.type }}</h5>
     <h6> {{ project.desc }}</h6> <br>
                     </div>
-                    <div class="e-col-4">
+                    <div class="e-col-3">
                       <h5> <a href="{{ project.url }}">Project Link</a></h5><br>
 
 
+
                     </div>
-<div class="e-col-4">
+                    <div class="e-col-3">
+                        <h5> <a href="{{ project.report }}">Project Report</a></h5><br>
+                    </div>
+<div class="e-col-2">
 <h6>{{project.done_on }}</h6>
+<h6></h6>
 </div>
                   </div>
 <div class="e-cols">
@@ -185,10 +190,23 @@
           <p class="title" id="title">Books Read</p>
         </div>
         <div class="e-col">
+          <table>
+            <thead>
+              <th>Title</th>
+              <th>Author</th>
+            </thead>
+            <tbody>
+
+              {% for book in books %}
+              <tr>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
           <ul class="white" style="font-size:2em">
-            {% for book in books %}
-            {{ book.name }}
-            {% endfor %}
+
           </ul>
         </div>
 

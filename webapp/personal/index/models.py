@@ -6,7 +6,7 @@ class Book(models.Model):
     name=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
     read_on=models.DateField('Date Read On')
-    review=models.TextField()
+    review=models.TextField(blank=True,null=True)
 class Article(models.Model):
     article_id=models.AutoField(primary_key=True)
     about=models.TextField(null=True)
@@ -20,9 +20,9 @@ class Interest(models.Model):
     image= models.ImageField(upload_to="images/interest/")
 class Project(models.Model):
     name=models.CharField(max_length=200)
-    url=models.URLField(null=True)
+    url=models.URLField(null=True,blank = True)
     desc=models.TextField()
-    report=models.FileField(upload_to="project_reports",null=True, blank=True)
+    report=models.URLField(null=True)
     image=models.ImageField(upload_to="images/projects/",null=True, blank=True)
     type=models.CharField(max_length=100)
     done_on=models.DateField('Done On',default=date.today )

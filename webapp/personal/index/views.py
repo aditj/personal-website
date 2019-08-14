@@ -7,7 +7,7 @@ import git
 # Create your views here.
 def index(request):
 
-    projects=Project.objects.all()
+    projects=Project.objects.all().order_by('done_on').reverse()[0:3]
     articles=Article.objects.all()
     interests=Interest.objects.all()
     books=Book.objects.all()
