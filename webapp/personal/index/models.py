@@ -22,8 +22,8 @@ class Project(models.Model):
     name=models.CharField(max_length=200)
     url=models.URLField(null=True)
     desc=models.TextField()
-    report=models.FileField(upload_to="project_reports",null=True)
-    image=models.ImageField(upload_to="images/projects/",null=True)
+    report=models.FileField(upload_to="project_reports",null=True, blank=True)
+    image=models.ImageField(upload_to="images/projects/",null=True, blank=True)
     type=models.CharField(max_length=100)
     done_on=models.DateField('Done On',default=date.today )
 
