@@ -8,3 +8,5 @@ local_settings.py
 
 .env
 webapp/personal/db.sqlite3
+webapp/personal/project_reports
+webapp/personal/articles
