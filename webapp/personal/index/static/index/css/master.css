@@ -2,7 +2,9 @@ html, body {
   height: 100%;
 
 }
-
+.e-nav {
+  background-color: #2d5d7c;
+}
 body{
   padding-top: 5em
 }
@@ -46,7 +48,7 @@ body{
 }
 
 .bg{
-background-image: "/static/index/css/bg.png";}
+background-color: #2E364F;}
 .full-height{
   height: 100%;
 }
