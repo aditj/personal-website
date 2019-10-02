@@ -10,3 +10,14 @@ local_settings.py
 webapp/personal/db.sqlite3
 webapp/personal/project_reports
 webapp/personal/articles
+
+.DS_Store
+*.sqlite3
+media/
+*.pyc
+*.db
+*.pid
+# django migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
