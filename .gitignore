@@ -7,12 +7,12 @@ webapp/personal/personal/__pycache__/
 local_settings.py
 
 .env
-webapp/personal/db.sqlite3
+
 webapp/personal/project_reports
 webapp/personal/articles
 
 .DS_Store
-*.sqlite3
+
 media/
 *.pyc
 *.db
