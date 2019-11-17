@@ -5,7 +5,7 @@ from datetime import date
 class Book(models.Model):
     name=models.CharField(max_length=100)
     author=models.CharField(max_length=100)
-    read_on=models.DateField('Date Read On',null=True)
+    read_on=models.DateField('Date Read On',blank=True,null=True)
     review=models.TextField(blank=True,null=True)
 class Article(models.Model):
     article_id=models.AutoField(primary_key=True)
